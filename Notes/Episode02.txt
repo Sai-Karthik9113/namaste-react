@@ -1,0 +1,93 @@
+1.  What is 'NPM'?
+    NPM is a default package manager for Node.js. It uses a Command Line Interface(CLI) to install and manage dependencies, a registry that serves
+    as a public database for JavaScript packages, and a package.json file to track dependencies and scripts for a project.
+
+    Note:- NPM is not an acronym and is definitely not "Node Package Manager".
+
+2.  What is 'Parcel/Webpack'? Why do we need it?
+    -   Parcel and Webpack are bundlers, tools that optimize our app by grouping everything into fewer files [Bundling], removing unnecessary 
+        elements (like whitespace, comments, console logs, and unused codes) [Minification], and improving load speed.
+    -   This helps the app run smoothly in production.
+
+3.  What is 'parcel-cache'?
+    -   Parcel caches code automatically to speed up builds.
+    -   On the first build, Parcel creates a .parcel-cache folder to store cached files in binary format.
+    -   When we make changes, subsequent builds are faster because Parcel loads from the cache instead of rebuilding everything from scratch.
+    -   This caching mechanism increases developer experience by reducing build time significantly.
+
+4.  What is 'npx'?
+    -   NPX allows us to run node packages without installing them globally. It comes with NPM(v5.2+).
+    -   Instead of installing a package manually, npx fetches and runs it directly.
+    -   This helps us use the latest version of a package every time we execute it.
+    -   It saves disk space and avoid cluttering our system with unnecessary global installations.
+
+5.  What is difference between `dependencies` vs `devDependencies`?
+    -   Dependencies are required for the app to run in production. Ex:- React, Express, etc.,
+    -   Dev-dependencies are only needed during the development. Ex:- Parcel, Babel, Webpack, etc.,
+    -   Both are used in development phase but devDependencies are ignored in the production phase.
+
+6.  What is Tree Shaking?
+    Tree shaking is the process of removing unwanted code that we do not use while developing the application. In computing, tree shaking is a dead
+    code elimination technique that is applied when optimizing code.
+
+7.  What is Hot Module Replacement?
+    -   Parcel tracks file changes in real-time and updates only the modified parts without full reload.
+    -   It uses File Watcher Algorithm(Written in C++) to detect changes and notify the server.
+    -   This improves developer experience by enabling faster updates during development.
+
+8.  List down your favourite 5 superpowers of Parcel and describe any 3 of them in your own words.
+    a.  Hot Module Replacement(HMR):
+        ---------------------------
+        Updates only the chaged parts of the app without a full reload, making development faster and smoother.
+
+    b.  Caching:
+        -------
+        Saves time by reusing previously built files, speeding up the subsequent builds.
+
+    c.  Tree Shaking:
+        ------------
+        Removes unused code from your project, by reducing the final bundle size for better performance.
+
+    d.  Code Splitting:
+        --------------
+        Breaking your app into smaller chunks, loading only what's needed to improve the initial load time.
+
+    e.  Differential Bundling:
+        ---------------------
+        Creates bundles for modern and older browsers, ensuring compatibility and optimized performance.
+
+9.  What is `.gitignore`? What should we add and not add into it?
+    '.gitignore' is a file used by Git to specify which files and directories should not be tracked by the version control. It prevents unnecessary
+    or sensitive files from being committed to a Git repository.
+
+    WHAT TO ADD     :-  Node Modules, Build Files, etc.,
+    WHAT NOT TO ADD :-  Source Code Files(.js, .jsx, .html, etc.,) and Configuration Files(package.json, webpack.config.js, etc.,)
+
+10. What is the difference between `package.json` and `package-lock.json`?
+    -   'package.json' will define the dependencies, scripts, and general metadata (Ex:- project name, version) and lists the version ranges for
+        dependencies.
+    -   'package.lock.json' locks the exact versions of dependencies and sub-dependencies for consistent installs. It ensures everyone installs the
+        same version of packages.
+    -   'package.json' defines what dependencies are needed, while 'package.lock.json' ensures the exact versions of those dependencies are installed
+        consistently across all environments.
+    
+11. Why should I not modify `package-lock.json`?
+    Manual modification of 'package.lock.json' can lead to errors, conflicts, and misalignment with 'package.json'. It is better to let npm handle
+    it, as it automatically updates and manages the packages.
+
+12. What is `node_modules` ? Is it a good idea to push that on git?
+    'node_modules' is a folder that contains all the packages and dependecies for our project. It is generated by npm when we run npm install and
+    includes all the libraries our project depends on, along with their dependencies.
+    
+    The node_modules folder can be very large, so it's not a good idea to push it to Git. Instead, we should add it to .gitignore. Also, the
+    dependencies can be recreated using 'pacakge.json' and 'package.lock.json' files.
+
+13. What is the `dist` folder?
+    -   The 'dist' folder contains the minified and optimized version of our source code. When the bundler builds the app, it outputs everything
+        into the 'dist' folder which includes the minified code and compiled modules.
+    -   Running `npx parcel index.html` creates a faster development version and serves it to the server.
+    -   Running `npx parcel build index.html` creates a production-ready build, including minified files, and places everything inside 'dist' folder.
+
+14. What is 'browserlists'?
+    Browserslist is a tool that specifies which browsers should be compatible/supported in our frontend app. It makes our code compatible for a lot
+    of browsers. It should be defined within "[]".
