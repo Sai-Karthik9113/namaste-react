@@ -1,0 +1,63 @@
+JavaScript Implementation:
+--------------------------
+    <script>
+        const header = document.createElement("h1");
+        header.innerHTML = "Hello World From JavaScript";
+
+        const container = document.getElementById("root");
+        container.appendChild(header);
+    </script>
+
+
+  
+React Implementation inside HTML file:
+--------------------------------------
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <script>
+        const header = React.createElement("h1", {}, "Hello World From React");
+        const root = ReactDOM.createRoot(document.getElementById("root"));
+
+        root.render(header);
+    </script>
+
+
+
+Example 01: Basic React Structure
+---------------------------------
+const header = React.createElement(
+  "h1",
+  { id: "header" },
+  "Hello World From React!"
+);
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(header);
+
+
+
+Example 02: Complex React Structure
+-----------------------------------
+const parent = React.createElement("div", { id: "parent" }, [
+  React.createElement("div", { id: "child1" }, [
+    React.createElement("h1", {}, "List out the h tags"),
+    React.createElement("h2", {}, "h1, h2, h3, h4, h5, h6"),
+  ]),
+  React.createElement("div", { id: "child2" }, [
+    React.createElement(
+      "h1",
+      {},
+      "Which should be ideally used for the top heading?"
+    ),
+    React.createElement("h2", {}, "The h1 tag is preferred. "),
+  ]),
+]);
+
+ JSX (transpiled before it reaches the JS) --> Parcel - Babel
+
+ JSX ⇒ Babel transpiles it to React.createElement ⇒ React Element - JS Object ⇒ HTMLElement (render)
