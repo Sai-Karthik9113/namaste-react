@@ -1,0 +1,41 @@
+1.  What is JSX?
+    JSX (JavaScript XML) is a syntax extension for JavaScript that allows us to write HTML-like or XML-like inside JavaScript, making React
+    development more intuitive.
+
+2.  Superpowers of JSX:
+    -   Syntax simplicity:-
+        -----------------
+        Write HTML-like code for better readability.
+
+    -   Ease of use:-
+        -----------
+        We can use JavaScript expressions inside {}.
+
+    -   Babel Transpilation:-
+        -------------------
+        Converts JSX into react element so browsers can understand it.
+
+    -   Component Composition:-
+        ---------------------
+        JSX allows nesting and reusing components easily.
+
+    -   Data Sanitization:-
+        -----------------
+        Prevents Cross-Site Scripting(XSS) attacks by escaping malicious code before rendering, protecting cookies, storage
+        and user data.
+
+3.  Role of type attribute in script tag? What options can I use there?
+    The type attribute in the <script> tag specifies the MIME type of the script, telling the browser how to interpret the script's content.
+    -   Different Options Available:-
+        ~   text/javascript (default)   ⇒   For regular JavaScript.
+        ~   module                      ⇒   For ES6 modules, enabling import/export.
+        ~   nomodule                    ⇒   For scripts that should not run in modern browsers supporting modules.
+        ~   application/json            ⇒   Embeds JSON data in a script.
+        ~   application/ld+json         ⇒   Embeds structured data (used for SEO).
+    Each option helps control how the browser processes the input.
+
+4.  {TitleComponent} vs {TitleComponent()} vs {<TitleComponent/>} vs {<TitleComponent></TitleComponent>} in JSX
+    -   {TitleComponent}                    ⇒   Used to access a variable; Not used for rendering.
+    -   {TitleComponent()}                  ⇒   Calls a function that might return JSX; Not typical for component rendering.
+    -   {<TitleComponent />}                ⇒   JSX syntax for rendering a self-closing react component (Components without children).
+    -   {<TitleComponent></TitleComponent>} ⇒   Syntax for rendering a non-self-closing component (Components with potential children).
