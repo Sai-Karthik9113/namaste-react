@@ -1,3 +1,83 @@
-#root {
-    color: red;
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+.header,
+.logo,
+.nav-items ul,
+.rating-delivery-container,
+.res-card {
+  display: flex;
+}
+.header {
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 20px;
+  border: 2px solid black;
+  border-radius: 0.5rem;
+}
+.logo {
+  width: 75px;
+}
+.nav-items ul {
+  list-style: none;
+}
+.nav-items ul li {
+  position: relative;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 24px;
+  margin: auto 20px;
+  padding: 20px auto;
+  width: max-content;
+}
+.nav-items ul li::after {
+  content: "";
+  position: absolute;
+  height: 4px;
+  width: 100%;
+  background-color: red;
+  bottom: -5px;
+  left: 0;
+  transition: 0.3s;
+  transition-timing-function: ease-in-out;
+  transform: scaleX(0);
+}
+
+.nav-items ul li:hover::after {
+  transform: scaleX(1);
+}
+
+.restaurant-container {
+  display: grid;
+  grid-template-columns: 250px 250px 250px 250px 250px 250px;
+}
+
+.res-card {
+  flex-direction: column;
+  cursor: pointer;
+  padding: auto 1rem;
+  width: 225px;
+  margin: 10px auto;
+  background-color: rgb(238, 238, 238);
+  border-radius: 0.5rem;
+}
+.res-card:hover {
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+}
+.food-details {
+  margin: auto 0.5rem;
+}
+.res-card img {
+  width: 100%;
+  height: 175px;
+  border-radius: 0.5rem;
+}
+.res-card h3,
+.res-card p {
+  font-size: 1rem;
+  margin: 5px 0;
+}
+.rating-delivery-container {
+  gap: 1rem;
 }
