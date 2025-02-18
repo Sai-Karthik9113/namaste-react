@@ -59,11 +59,13 @@ body {
   padding: auto 1rem;
   width: 225px;
   margin: 10px auto;
-  background-color: rgb(238, 238, 238);
+  background-color: rgb(246, 246, 246);
   border-radius: 0.5rem;
 }
 .res-card:hover {
+  transition: 0.3s;
   box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+  background-color: rgb(255, 255, 255);
 }
 .food-details {
   margin: auto 0.5rem;
