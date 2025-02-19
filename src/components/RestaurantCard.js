@@ -1,4 +1,5 @@
 import { CDN_URL } from "../utils/constants";
+import { MdStars } from "react-icons/md";
 
 const RestaurantCard = (props) => {
   const { resData } = props;
@@ -13,7 +14,9 @@ const RestaurantCard = (props) => {
       <div className="food-details">
         <h3>{resData.info.name}</h3>
         <div className="rating-delivery-container">
+          <MdStars size="24px" color="green" />
           <h3>{resData.info.avgRating}</h3>
+          <h3>·</h3>
           <h3>{resData.info.sla.slaString}</h3>
         </div>
         <p>{resData.info.cuisines.join(", ")}</p>

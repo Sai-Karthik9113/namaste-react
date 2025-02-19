@@ -81,5 +81,9 @@ body {
   margin: 5px 0;
 }
 .rating-delivery-container {
-  gap: 1rem;
+  align-items: center;
+  gap: 0.25rem;
+}
+button {
+  cursor: pointer;
 }
