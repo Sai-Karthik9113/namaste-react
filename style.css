@@ -48,7 +48,8 @@ body {
   transform: scaleX(1);
 }
 
-.restaurant-container {
+.restaurant-container,
+.shimmer-container {
   display: grid;
   grid-template-columns: 250px 250px 250px 250px 250px 250px;
 }
@@ -86,4 +87,39 @@ body {
 }
 button {
   cursor: pointer;
+  font-family: "Poppins", sans-serif;
+}
+
+.filter,
+.filter-filler {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  margin: 1rem;
+}
+.filter-btn {
+  height: fit-content;
+}
+
+.login-btn {
+  font-size: 24px;
+  font-weight: 500;
+  height: 50px;
+  width: 100px;
+  background-color: rgb(6, 152, 6);
+  color: rgb(255, 255, 255);
+}
+
+.search-shimmer,
+.filter-shimmer {
+  width: 175px;
+  height: 25px;
+  background-color: rgb(225, 225, 225);
+}
+.shimmer-card {
+  width: 225px;
+  height: 250px;
+  margin: 1rem;
+  border-radius: 0.5rem;
+  background-color: rgb(225, 225, 225);
 }
