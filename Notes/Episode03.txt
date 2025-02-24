@@ -4,11 +4,11 @@
 
 2.  Superpowers of JSX:
     -   Syntax simplicity:-
-        -----------------
+        -------------------
         Write HTML-like code for better readability.
 
     -   Ease of use:-
-        -----------
+        -------------
         We can use JavaScript expressions inside {}.
 
     -   Babel Transpilation:-
