@@ -53,20 +53,24 @@ const Body = () => {
             Search
           </button>
         </div>
-        <button
-          className="filter-btn"
-          onClick={() => {
-            const filteredContent = listOfRestaurants.filter(
-              (res) => res.info.avgRating >= 4.5
-            );
-            setFilteredRestauarants(filteredContent);
-          }}
-        >
-          Top Rated Restaurants
-        </button>
-        {/* {listOfRestaurants.length !== originalList.length && (
-          <button onClick={() => setListOfRestaurants(originalList)}>X</button>
-        )} */}
+        <div>
+          <button
+            className="filter-btn"
+            onClick={() => {
+              const filteredContent = listOfRestaurants.filter(
+                (res) => res.info.avgRating >= 4.5
+              );
+              setFilteredRestauarants(filteredContent);
+            }}
+          >
+            Top Rated Restaurants
+          </button>
+          {listOfRestaurants.length !== filteredRestaurants.length && (
+            <button onClick={() => setFilteredRestauarants(listOfRestaurants)}>
+              X
+            </button>
+          )}
+        </div>
       </div>
       <div className="restaurant-container">
         {filteredRestaurants.map((restaurant) => (
