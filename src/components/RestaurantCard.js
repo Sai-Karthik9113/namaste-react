@@ -16,7 +16,7 @@ const RestaurantCard = (props) => {
         <div className="rating-delivery-container">
           <MdStars size="24px" color="green" />
           <h3>{resData.info.avgRating}</h3>
-          <h3>·</h3>
+          <h3>•</h3>
           <h3>{resData.info.sla.slaString}</h3>
         </div>
         <p>{resData.info.cuisines.join(", ")}</p>
