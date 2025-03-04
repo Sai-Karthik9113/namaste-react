@@ -1,7 +1,7 @@
 import useRestaurantMenu from "../utils/useRestaurantMenu";
 import { useParams } from "react-router-dom";
 import DishCard from "./DishCard";
-import Shimmer from "./Shimmer";
+import ShimmerDish from "./ShimmerDish";
 import { MdStars } from "react-icons/md";
 
 const RestaurantMenu = () => {
@@ -10,7 +10,7 @@ const RestaurantMenu = () => {
   const restInfo = useRestaurantMenu(resId);
 
   if (restInfo === null) {
-    return <Shimmer />;
+    return <ShimmerDish />;
   }
 
   const {
