@@ -1,6 +1,6 @@
 const Shimmer = () => {
   return (
-    <div className="p-4 mt-20">
+    <div className="p-4 mt-20 bg-white dark:bg-gray-900">
       <div className="flex gap-5 mb-6">
         <div className="h-10 w-48 bg-gray-300 dark:bg-gray-700 rounded-md animate-pulse"></div>
         <div className="h-10 w-32 bg-gray-300 dark:bg-gray-700 rounded-md animate-pulse"></div>
