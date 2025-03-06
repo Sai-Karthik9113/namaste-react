@@ -36,13 +36,13 @@ const Body = () => {
   return listOfRestaurants.length === 0 ? (
     <Shimmer />
   ) : (
-    <div className="body bg-white dark:bg-gray-900 mt-30 p-6">
-      <div className="flex items-center justify-between gap-4 p-4 bg-gray-50 dark:bg-gray-800 shadow-md rounded-lg">
+    <div className="body bg-white dark:bg-gray-900 mt-20 p-6 transition-colors duration-300">
+      <div className="flex items-center justify-between gap-4 p-4 bg-gray-50 dark:bg-gray-800 shadow-md rounded-lg transition-colors duration-300">
         <div className="flex gap-4">
-          <div className="flex items-center border border-gray-300 dark:border-gray-600 rounded-md overflow-hidden">
+          <div className="flex items-center border border-gray-300 dark:border-gray-600 rounded-md overflow-hidden transition-colors duration-300">
             <input
               type="text"
-              className="h-12 px-4 bg-transparent text-gray-800 dark:text-gray-200 outline-none"
+              className="h-12 px-4 bg-transparent text-gray-800 dark:text-gray-200 outline-none transition-colors duration-300"
               placeholder="Search restaurants..."
               value={searchBoxText}
               onChange={(e) => setSearchBoxText(e.target.value)}
@@ -82,7 +82,7 @@ const Body = () => {
           </button>
         )}
       </div>
-      <div className="grid gird-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 mt-6">
+      <div className="grid gird-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 mt-6">
         {filteredRestaurants.map((restaurant) => (
           <Link
             key={restaurant.info.id}

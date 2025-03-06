@@ -1,51 +1,78 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { BsSun, BsMoon } from "react-icons/bs";
 
 const Header = () => {
+  const [darkMode, setDarkMode] = useState(
+    localStorage.getItem("theme") === "dark"
+  );
   const [loginLogout, setLoginLogout] = useState("Login");
 
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+    }
+  }, [darkMode]);
+
   return (
-    <div className="flex fixed justify-between items-center bg-white top-0 z-50 w-full shadow-xl">
-      <div className="flex items-center w-20">
-        <img className="logo" src={require("../../assets/logo.jpg")} />
-        <h1 className="font-rocksalt font-black text-6xl text-orange-500 tracking-wider">
+    <div className="flex fixed top-0 left-0 w-full justify-between items-center bg-white dark:bg-gray-900 shadow-md p-4 z-50 transition-colors duration-300">
+      <div className="flex items-center space-x-2">
+        <img
+          className="w-14 h-14 rounded-full object-cover"
+          src={require("../../assets/logo.jpg")}
+        />
+        <h1 className="font-rocksalt font-black text-4xl text-orange-500 tracking-wider">
           X
         </h1>
-        <h1 className="font-montserrat font-extrabold italic text-5xl">
+        <h1 className="font-montserrat font-extrabold italic text-3xl dark:text-white transition-colors duration-300">
           wippy
         </h1>
       </div>
-      <div className="nav-items flex items-center p-2">
-        <ul className="flex space-x-5">
-          <li className="relative text-2xl font-medium cursor-pointer mx-5 my-auto py-5 group">
-            <Link to={"/"}>Home</Link>
-            <span className="absolute left-0 bottom-[10px] h-1 w-full bg-red-500 transform scale-x-0 transition-transform duration-300 ease-in-out group-hover:scale-x-100"></span>
-          </li>
-          <li className="relative text-2xl font-medium cursor-pointer mx-5 my-auto py-5 group">
-            <Link to={"/about"}>About Us</Link>
-            <span className="absolute left-0 bottom-[10px] h-1 w-full bg-red-500 transform scale-x-0 transition-transform duration-300 ease-in-out group-hover:scale-x-100"></span>
-          </li>
-          <li className="relative text-2xl font-medium cursor-pointer mx-5 my-auto py-5 group">
-            <Link to={"/contactus"}>Contact Us</Link>
-            <span className="absolute left-0 bottom-[10px] h-1 w-full bg-red-500 transform scale-x-0 transition-transform duration-300 ease-in-out group-hover:scale-x-100"></span>
-          </li>
-          <li className="relative text-2xl font-medium cursor-pointer mx-5 my-auto py-5 group">
-            Cart
-            <span className="absolute left-0 bottom-[10px] h-1 w-full bg-red-500 transform scale-x-0 transition-transform duration-300 ease-in-out group-hover:scale-x-100"></span>
-          </li>
-          <li className="text-2xl font-medium cursor-pointer mx-5 my-auto py-5">
-            <button
-              className="login-btn cursor-pointer w-25 h-12.5 bg-orange-500 text-white rounded-md"
-              onClick={() =>
-                loginLogout === "Login"
-                  ? setLoginLogout("Logout")
-                  : setLoginLogout("Login")
-              }
+      <div className="flex items-center gap-6">
+        <ul className="flex space-x-8">
+          {["Home", "About Us", "Contact Us", "Cart"].map((item, index) => (
+            <li
+              key={index}
+              className="relative text-xl font-medium cursor-pointer group"
             >
-              {loginLogout}
-            </button>
-          </li>
+              <Link
+                to={`/${item.toLowerCase().replace(/\s+/g, "")}`}
+                className="dark:text-gray-200 transition-colors duration-300"
+              >
+                {item}
+              </Link>
+              <span className="absolute left-0 bottom-[-5] h-1 w-full bg-red-500 transform scale-x-0 transition-transform duration-300 ease-in-out group-hover:scale-x-100"></span>
+            </li>
+          ))}
         </ul>
+
+        {/* Dark Mode Toggle */}
+        <button
+          onClick={() => setDarkMode(!darkMode)}
+          className="p-2 rounded-full border border-gray-300 dark:border-gray-600 transition-colors duration-300"
+        >
+          {darkMode ? (
+            <BsSun size={20} className="text-yellow-500" />
+          ) : (
+            <BsMoon size={20} className="text-gray-700" />
+          )}
+        </button>
+
+        {/* Login - Logout Toggle button */}
+        <button
+          className="bg-orange-500 hover:bg-orange-600 font-medium text-white text-xl cursor-pointer w-25 h-12 rounded-md transition-all"
+          onClick={() =>
+            loginLogout === "Login"
+              ? setLoginLogout("Logout")
+              : setLoginLogout("Login")
+          }
+        >
+          {loginLogout}
+        </button>
       </div>
     </div>
   );
