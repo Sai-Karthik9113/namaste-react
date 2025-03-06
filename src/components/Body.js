@@ -36,47 +36,49 @@ const Body = () => {
   return listOfRestaurants.length === 0 ? (
     <Shimmer />
   ) : (
-    <div className="body bg-white dark:bg-gray-900 mt-30 p-4">
-      <div className="flex items-center gap-4 p-4 bg-gray-50 dark:bg-gray-800 shadow-md rounded-lg">
-        <div className="flex items-center border border-gray-300 dark:border-gray-600 rounded-md">
-          <input
-            type="text"
-            className="h-10 px-3 bg-transparent text-gray-800 dark:text-gray-200 outline-none"
-            placeholder="Search restaurants..."
-            value={searchBoxText}
-            onChange={(e) => setSearchBoxText(e.target.value)}
-          />
+    <div className="body bg-white dark:bg-gray-900 mt-30 p-6">
+      <div className="flex items-center justify-between gap-4 p-4 bg-gray-50 dark:bg-gray-800 shadow-md rounded-lg">
+        <div className="flex gap-4">
+          <div className="flex items-center border border-gray-300 dark:border-gray-600 rounded-md overflow-hidden">
+            <input
+              type="text"
+              className="h-12 px-4 bg-transparent text-gray-800 dark:text-gray-200 outline-none"
+              placeholder="Search restaurants..."
+              value={searchBoxText}
+              onChange={(e) => setSearchBoxText(e.target.value)}
+            />
+            <button
+              className="bg-orange-500 hover:bg-orange-600 text-white px-5 h-12 rounded-e-md cursor-pointer transition-all"
+              onClick={() => {
+                const searchContent = listOfRestaurants.filter((res) =>
+                  res.info.name
+                    .toLowerCase()
+                    .includes(searchBoxText.toLowerCase())
+                );
+                setFilteredRestauarants(searchContent);
+              }}
+            >
+              Search
+            </button>
+          </div>
           <button
-            className="bg-orange-500 hover:bg-orange-600 text-white px-4 h-10 rounded-e-md cursor-pointer transition-all"
+            className="bg-green-500 hover:bg-green-600 text-white px-5 h-12 rounded-md cursor-pointer transition-all"
             onClick={() => {
-              const searchContent = listOfRestaurants.filter((res) =>
-                res.info.name
-                  .toLowerCase()
-                  .includes(searchBoxText.toLowerCase())
+              const filteredContent = listOfRestaurants.filter(
+                (res) => res.info.avgRating >= 4.5
               );
-              setFilteredRestauarants(searchContent);
+              setFilteredRestauarants(filteredContent);
             }}
           >
-            Search
+            ⭐ Top Rated
           </button>
         </div>
-        <button
-          className="bg-green-500 hover:bg-green-600 text-white px-4 h-10 rounded-md transition-all"
-          onClick={() => {
-            const filteredContent = listOfRestaurants.filter(
-              (res) => res.info.avgRating >= 4.5
-            );
-            setFilteredRestauarants(filteredContent);
-          }}
-        >
-          ⭐ Top Rated
-        </button>
         {listOfRestaurants.length !== filteredRestaurants.length && (
           <button
-            className="bg-red-500 hover:bg-red-600 text-white w-10 h-10 rounded-md transition-all"
+            className="bg-red-500 hover:bg-red-600 text-white px-5 h-12 rounded-md cursor-pointer transition-all"
             onClick={() => setFilteredRestauarants(listOfRestaurants)}
           >
-            X
+            Clear
           </button>
         )}
       </div>
