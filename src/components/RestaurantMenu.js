@@ -6,10 +6,9 @@ import { MdStars } from "react-icons/md";
 
 const RestaurantMenu = () => {
   const { resId } = useParams();
-
   const restInfo = useRestaurantMenu(resId);
 
-  if (restInfo === null) {
+  if (!restInfo) {
     return <ShimmerDish />;
   }
 
@@ -31,28 +30,46 @@ const RestaurantMenu = () => {
       ?.itemCards ||
     [];
   return (
-    <div className="menu-container">
-      <h1>{name}</h1>
-      <div className="menu-details">
-        <div className="restaurant-details">
-          <MdStars size="24px" color="green" />
-          <p className="price">
-            <strong>
+    <div className="flex justify-center items-center min-h-screen px-4 dark:bg-gray-800 transition-colors duration-300">
+      <div className="w-full max-w-4xl mt-20 p-8 md:p-12">
+        <h1 className="text-4xl font-extrabold text-orange-500 mb-4">{name}</h1>
+
+        <div className="text-[1rem] bg-gray-50 dark:bg-gray-600 shadow-[10px_10px_20px_rgba(0,0,0,0.15),-10px_10px_20px_rgba(0,0,0,0.15),0px_10px_15px_rgba(0,0,0,0.25)] rounded-3xl p-5 mt-6 transition-colors duration-300">
+          <p className="flex items-center space-x-1">
+            <MdStars size="24px" className="text-green-500" />
+            <span className="font-bold text-gray-900 dark:text-white transition-colors duration-300">
               {avgRatingString} ({totalRatingsString}) • {costForTwoMessage}
-            </strong>
+            </span>
           </p>
+          <p className="mt-2">
+            <span className="text-orange-500 dark:text-orange-400 font-bold transition-colors duration-300">
+              {cuisines.join(", ")}
+            </span>
+          </p>
+
+          <div className="flex flex-col justify-center mt-4">
+            <div className="flex items-center rounded-[50%] bg-gray-400 dark:bg-gray-200 w-[8px] h-[8px] transition-colors duration-300">
+              <span className="text-sm font-bold dark:text-gray-50 whitespace-nowrap pl-6 transition-colors duration-300">
+                Outlet
+              </span>
+              <span className="text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap pl-4 transition-colors duration-300">
+                {areaName}
+              </span>
+            </div>
+            <div className="border-l-[3px] border-gray-400 dark:border-gray-200 mx-[2.75px] h-8 transition-colors duration-300"></div>
+            <div className="flex items-center rounded-[50%] bg-gray-400 dark:bg-gray-200  w-[8px] h-[8px] transition-colors duration-300">
+              <span className="text-sm font-bold dark:text-gray-50 whitespace-nowrap pl-6 lowercase transition-colors duration-300">
+                {sla.slaString}
+              </span>
+            </div>
+          </div>
         </div>
-        <div className="cuisines">
-          <strong>{cuisines.join(", ")}</strong>
+
+        <div className="mt-6 space-y-4">
+          {itemCards.map((dish) => (
+            <DishCard key={dish.card.info.id} dishData={dish.card.info} />
+          ))}
         </div>
-        <div>
-          {areaName} • {sla.slaString}
-        </div>
-      </div>
-      <div>
-        {itemCards.map((dish) => (
-          <DishCard key={dish.card.info.id} dishData={dish.card.info} />
-        ))}
       </div>
     </div>
   );
