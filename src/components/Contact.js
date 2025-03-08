@@ -38,19 +38,19 @@ const Contact = () => {
           <input
             type="text"
             placeholder="Your Name"
-            className="p-3 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-orange-500 focus-outline-none transition-colors duration-300"
+            className="p-3 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-orange-500 focus:outline-none transition-colors duration-300"
             required
           />
           <input
             type="email"
             placeholder="Email"
-            className="p-3 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-orange-500 focus-outline-none transition-colors duration-300"
+            className="p-3 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-orange-500 focus:outline-none transition-colors duration-300"
             required
           />
           <textarea
             placeholder="Your Message"
             rows="4"
-            className="p-3 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-orange-500 focus-outline-none transition-colors duration-300"
+            className="p-3 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-orange-500 focus:outline-none transition-colors duration-300"
             required
           ></textarea>
           <button
