@@ -22,6 +22,16 @@ const RestaurantMenu = () => {
     sla,
   } = restInfo.cards[2].card.card.info;
 
+  const categories =
+    restInfo?.cards[4]?.groupedCard?.cardGroup?.REGULAR?.cards.filter(
+      (card) =>
+        card?.card?.["@type"] ===
+          type.googleapis.com / swiggy.presentation.food.v2.ItemCategory ||
+        type.googleapis.com / swiggy.presentation.food.v2.NestedItemCategory
+    );
+
+  console.log(categories);
+
   const itemCards =
     restInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card?.categories?.flatMap(
       (category) => category.itemCards

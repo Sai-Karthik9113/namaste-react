@@ -4,10 +4,11 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { API_URL } from "../utils/constants";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import { info } from "autoprefixer";
 
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
-  const [filteredRestaurants, setFilteredRestauarants] = useState([]);
+  const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [searchBoxText, setSearchBoxText] = useState("");
 
   const onlineStatus = useOnlineStatus();
@@ -22,22 +23,30 @@ const Body = () => {
     try {
       const data = await fetch(`${API_URL}`);
       const res = await data.json();
-      setListOfRestaurants(
-        res.data.cards[1].card.card.gridElements.infoWithStyle.restaurants
+
+      const availableRestaurants = res?.data?.cards.filter(
+        (item) =>
+          item?.card?.card?.gridElements?.infoWithStyle?.["@type"] ===
+          "type.googleapis.com/swiggy.presentation.food.v2.FavouriteRestaurantInfoWithStyle"
       );
-      setFilteredRestauarants(
-        res.data.cards[1].card.card.gridElements.infoWithStyle.restaurants
+
+      const mergerdRestaurants = availableRestaurants.flatMap(
+        (item) =>
+          item?.card?.card?.gridElements?.infoWithStyle?.restaurants || []
       );
+
+      const uniqueRestaurants = Array.from(
+        new Map(
+          mergerdRestaurants.map((item) => [item?.info?.id, item])
+        ).values()
+      );
+
+      setListOfRestaurants(uniqueRestaurants);
+      setFilteredRestaurants(uniqueRestaurants);
     } catch (error) {
       console.error("Error: ", error);
     }
   };
-
-  const discountedCard = filteredRestaurants.map((restaurant) => {
-    return restaurant?.info?.aggregatedDiscountInfoV3 || [];
-  });
-
-  console.log(discountedCard);
 
   const RestaurantCardPromoted = withPromotedLabel(RestaurantCard);
 
@@ -63,7 +72,7 @@ const Body = () => {
                     .toLowerCase()
                     .includes(searchBoxText.toLowerCase())
                 );
-                setFilteredRestauarants(searchContent);
+                setFilteredRestaurants(searchContent);
               }}
             >
               Search
@@ -75,7 +84,7 @@ const Body = () => {
               const filteredContent = listOfRestaurants.filter(
                 (res) => res.info.avgRating >= 4.5
               );
-              setFilteredRestauarants(filteredContent);
+              setFilteredRestaurants(filteredContent);
             }}
           >
             ⭐ Top Rated
@@ -84,7 +93,7 @@ const Body = () => {
         {listOfRestaurants.length !== filteredRestaurants.length && (
           <button
             className="bg-red-500 hover:bg-red-600 text-white px-5 h-12 rounded-md cursor-pointer transition-all"
-            onClick={() => setFilteredRestauarants(listOfRestaurants)}
+            onClick={() => setFilteredRestaurants(listOfRestaurants)}
           >
             Clear
           </button>
