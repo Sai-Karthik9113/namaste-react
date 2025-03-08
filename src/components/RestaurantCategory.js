@@ -18,8 +18,8 @@ const RestaurantCategory = ({ category, showItems, setShowIndex }) => {
       className="my-10 pb-10 border-b-15 border-gray-200 dark:border-gray-600 transition-colors duration-300"
       onClick={handleClick}
     >
-      <div className="flex justify-between items-center cursor-pointer">
-        <p className="text-xl font-black dark:text-white transition-colors duration-300">
+      <div className="flex justify-between items-center cursor-pointer font-black dark:text-white transition-colors duration-300">
+        <p className="text-xl">
           {category?.title} ({totalDish})
         </p>
         {!showItems ? <BiChevronDown size={30} /> : <BiChevronUp size={30} />}

@@ -11,7 +11,7 @@ const DishCard = (props) => {
           {dishData.name}
         </h4>
         <p className="text-gray-700 dark:text-gray-300 transition-colors duration-300">
-          ₹{dishData.price / 100}
+          ₹{(dishData?.price || dishData?.defaultPrice) / 100}
         </p>
 
         {dishData.ratings?.aggregatedRating?.rating && (
