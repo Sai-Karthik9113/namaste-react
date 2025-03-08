@@ -1,10 +1,12 @@
 import useRestaurantMenu from "../utils/useRestaurantMenu";
 import { useParams } from "react-router-dom";
-import DishCard from "./DishCard";
+import RestaurantCategory from "./RestaurantCategory";
 import ShimmerDish from "./ShimmerDish";
 import { MdStars } from "react-icons/md";
+import { useState } from "react";
 
 const RestaurantMenu = () => {
+  const [showIndex, setShowIndex] = useState(0);
   const { resId } = useParams();
   const restInfo = useRestaurantMenu(resId);
 
@@ -20,25 +22,17 @@ const RestaurantMenu = () => {
     cuisines,
     areaName,
     sla,
-  } = restInfo.cards[2].card.card.info;
+  } = restInfo?.cards[2]?.card?.card?.info;
 
   const categories =
-    restInfo?.cards[4]?.groupedCard?.cardGroup?.REGULAR?.cards.filter(
-      (card) =>
-        card?.card?.["@type"] ===
-          type.googleapis.com / swiggy.presentation.food.v2.ItemCategory ||
-        type.googleapis.com / swiggy.presentation.food.v2.NestedItemCategory
+    restInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
+      (item) =>
+        item?.card?.card?.["@type"] ===
+          "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory" ||
+        item?.card?.card?.["@type"] ===
+          "type.googleapis.com/swiggy.presentation.food.v2.NestedItemCategory"
     );
 
-  console.log(categories);
-
-  const itemCards =
-    restInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card?.categories?.flatMap(
-      (category) => category.itemCards
-    ) ||
-    restInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card
-      ?.itemCards ||
-    [];
   return (
     <div className="flex justify-center items-center min-h-screen px-4 dark:bg-gray-800 transition-colors duration-300">
       <div className="w-full max-w-4xl mt-20 p-8 md:p-12">
@@ -76,8 +70,13 @@ const RestaurantMenu = () => {
         </div>
 
         <div className="mt-6 space-y-4">
-          {itemCards.map((dish) => (
-            <DishCard key={dish.card.info.id} dishData={dish.card.info} />
+          {categories.map((item, index) => (
+            <RestaurantCategory
+              key={item?.card?.card?.categoryId}
+              category={item?.card?.card}
+              showItems={index === showIndex ? true : false}
+              setShowIndex={() => setShowIndex(index)}
+            />
           ))}
         </div>
       </div>

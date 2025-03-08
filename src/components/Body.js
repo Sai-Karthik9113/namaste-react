@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { API_URL } from "../utils/constants";
 import useOnlineStatus from "../utils/useOnlineStatus";
-import { info } from "autoprefixer";
 
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);

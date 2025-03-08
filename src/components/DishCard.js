@@ -3,7 +3,6 @@ import { FaStar } from "react-icons/fa";
 
 const DishCard = (props) => {
   const { dishData } = props;
-  console.log(dishData);
 
   return (
     <div className="flex justify-between items-center py-10 border-b border-gray-300 dark:border-gray-600 transition-colors duration-300">
