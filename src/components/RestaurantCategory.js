@@ -1,7 +1,12 @@
 import DishCard from "./DishCard";
 import { BiChevronDown, BiChevronUp } from "react-icons/bi";
 
-const RestaurantCategory = ({ category, showItems, setShowIndex }) => {
+const RestaurantCategory = ({
+  category,
+  showItems,
+  setShowIndex,
+  restaurantName,
+}) => {
   const totalDish = category?.itemCards?.length || category?.categories?.length;
 
   const itemCards =
@@ -27,7 +32,11 @@ const RestaurantCategory = ({ category, showItems, setShowIndex }) => {
       {showItems && (
         <div>
           {itemCards.map((item) => (
-            <DishCard key={item?.card?.info?.id} dishData={item?.card?.info} />
+            <DishCard
+              key={item?.card?.info?.id}
+              dishData={item?.card?.info}
+              restaurantName={restaurantName}
+            />
           ))}
         </div>
       )}

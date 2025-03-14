@@ -5,12 +5,16 @@ const RestaurantCard = (props) => {
   const { resData } = props;
 
   return (
-    <div className="h-full flex flex-col bg-white dark:bg-gray-800 transition-colors duration-300 shadow-lg rounded-xl overflow-hidden transition-transform transform hover:scale-105">
-      <img
-        className="w-full h-48 object-cover"
-        alt="food"
-        src={`${CDN_URL}${resData.info.cloudinaryImageId}`}
-      />
+    <div className="h-full flex flex-col bg-white dark:bg-gray-800 shadow-lg rounded-xl overflow-hidden transition-transform duration-300 transform hover:scale-105">
+      {resData?.info?.cloudinaryImageId ? (
+        <img
+          className="w-full h-48 object-cover"
+          alt="food"
+          src={`${CDN_URL}${resData.info.cloudinaryImageId}`}
+        />
+      ) : (
+        <div className="w-full h-48 bg-amber-100"></div>
+      )}
       <div className="p-4">
         <h3 className="text-lg font-bold text-gray-900 dark:text-white transition-colors duration-300">
           {resData.info.name}

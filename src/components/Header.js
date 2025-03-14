@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { BsSun, BsMoon } from "react-icons/bs";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const [darkMode, setDarkMode] = useState(
@@ -18,6 +19,9 @@ const Header = () => {
     }
   }, [darkMode]);
 
+  //Subscribing to the store using a selector
+  const cartItems = useSelector((store) => store.cart.items);
+
   return (
     <div className="flex fixed top-0 left-0 w-full justify-between items-center bg-white dark:bg-gray-900 shadow-md p-4 z-50 transition-colors duration-300">
       <div className="flex items-center space-x-2">
@@ -34,20 +38,22 @@ const Header = () => {
       </div>
       <div className="flex items-center gap-6">
         <ul className="flex space-x-8">
-          {["Home", "About Us", "Contact Us", "Cart"].map((item, index) => (
-            <li
-              key={index}
-              className="relative text-xl font-medium cursor-pointer group"
-            >
-              <Link
-                to={`/${item.toLowerCase().replace(/\s+/g, "")}`}
-                className="dark:text-gray-200 transition-colors duration-300"
+          {["Home", "About Us", "Contact Us", `Cart (${cartItems.length})`].map(
+            (item, index) => (
+              <li
+                key={index}
+                className="relative text-xl font-medium cursor-pointer group"
               >
-                {item}
-              </Link>
-              <span className="absolute left-0 bottom-[-5] h-1 w-full bg-red-500 transform scale-x-0 transition-transform duration-300 ease-in-out group-hover:scale-x-100"></span>
-            </li>
-          ))}
+                <Link
+                  to={`/${item.replace(/[^a-zA-Z]/g, "").toLowerCase()}`}
+                  className="dark:text-gray-200 transition-colors duration-300"
+                >
+                  {item}
+                </Link>
+                <span className="absolute left-0 bottom-[-5] h-1 w-full bg-red-500 transform scale-x-0 transition-transform duration-300 ease-in-out group-hover:scale-x-100"></span>
+              </li>
+            )
+          )}
         </ul>
 
         {/* Dark Mode Toggle */}

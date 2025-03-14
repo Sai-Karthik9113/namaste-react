@@ -10,6 +10,4 @@ index fa2e909..14450c2 100644
 +import { HydratedRouter, RouterProvider } from "react-router-dom";
  export * from "react-router";
  export {
-  HydratedRouter,
-  RouterProvider
-}
+   HydratedRouter,
