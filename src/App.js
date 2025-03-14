@@ -9,7 +9,7 @@ import Cart from "./components/Cart";
 import Error from "./components/Error";
 // import ShimmerDish from "./components/ShimmerDish";
 import RestaurantMenu from "./components/RestaurantMenu";
-import { createBrowserRouter, RouterProvider, Outlet } from "react-router";
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import { createRoot } from "react-dom/client";
 import { Provider } from "react-redux";
 import appStore from "./redux_store/appStore";
