@@ -36,6 +36,7 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.6.1",
+    "@swc/helpers": "^0.5.15",
     "@tailwindcss/postcss": "^4.0.9",
     "cors": "^2.8.5",
     "express": "^4.21.2",
@@ -50,7 +51,6 @@
   "browserslist": [
     "last 2 versions"
   ],
-  "main": "tailwind.config.js",
   "keywords": [],
   "type": "commonjs"
 }

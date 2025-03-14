@@ -25,10 +25,6 @@ const Header = () => {
   return (
     <div className="flex fixed top-0 left-0 w-full justify-between items-center bg-white dark:bg-gray-900 shadow-md p-4 z-50 transition-colors duration-300">
       <div className="flex items-center space-x-2">
-        <img
-          className="w-14 h-14 rounded-full object-cover"
-          src={require("../../assets/logo.jpg")}
-        />
         <h1 className="font-rocksalt font-black text-4xl text-orange-500 tracking-wider">
           X
         </h1>
