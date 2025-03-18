@@ -74,10 +74,11 @@ const About = () => {
 
         <p className="text-center text-lg font-medium mt-6 text-gray-900 dark:text-white transition-colors duration-300">
           🍕 Hungry?{" "}
-          <span className="text-orange-500 font-bold">
-            {" "}
-            Order now on Xwippy
-          </span>{" "}
+          <Link to={"/home"}>
+            <span className="text-orange-500 font-bold hover:text-orange-600">
+              Order now on Xwippy
+            </span>{" "}
+          </Link>
           and enjoy a delicious meal at your convenience!
         </p>
 

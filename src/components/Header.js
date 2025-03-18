@@ -25,9 +25,7 @@ const Header = () => {
   return (
     <div className="flex fixed top-0 left-0 w-full justify-between items-center bg-white dark:bg-gray-900 shadow-md p-4 z-50 transition-colors duration-300">
       <div className="flex items-center space-x-2">
-        <h1 className="font-rocksalt font-black text-4xl text-orange-500 tracking-wider">
-          X
-        </h1>
+        <h1 className="font-rocksalt font-black text-4xl text-orange-500">X</h1>
         <h1 className="font-montserrat font-extrabold italic text-3xl dark:text-white transition-colors duration-300">
           wippy
         </h1>
@@ -54,6 +52,7 @@ const Header = () => {
 
         {/* Dark Mode Toggle */}
         <button
+          data-testid="dark-mode-toggle"
           onClick={() => setDarkMode(!darkMode)}
           className="p-2 rounded-full border border-gray-300 dark:border-gray-600 transition-colors duration-300"
         >
