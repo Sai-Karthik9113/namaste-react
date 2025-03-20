@@ -59,7 +59,7 @@ const Body = () => {
     <Shimmer />
   ) : (
     <div className="body bg-white dark:bg-gray-900 mt-20 p-6 transition-colors duration-300">
-      <div className="flex items-center justify-between gap-4 p-4 bg-gray-50 dark:bg-gray-800 shadow-md rounded-lg transition-colors duration-300">
+      <div className="flex items-center justify-between gap-4 py-4">
         <div className="flex gap-4">
           <div className="flex items-center border border-gray-300 dark:border-gray-600 rounded-md overflow-hidden transition-colors duration-300">
             <input

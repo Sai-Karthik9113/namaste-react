@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { CDN_URL } from "../utils/constants";
-import { addItem, removeItem } from "../redux_store/cartSlice";
+import { addItem, clearCart, removeItem } from "../redux_store/cartSlice";
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -14,6 +14,10 @@ const Cart = () => {
 
   const handleRemoveItem = (item) => {
     dispatch(removeItem(item));
+  };
+
+  const handleClearCart = () => {
+    dispatch(clearCart());
   };
 
   const totalBill = cartItems.reduce((acc, item) => {
@@ -105,6 +109,13 @@ const Cart = () => {
             </span>
           </div>
         </div>
+
+        <button
+          className="w-full mt-4 bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded cursor-pointer"
+          onClick={handleClearCart}
+        >
+          Clear
+        </button>
       </div>
     </div>
   );
