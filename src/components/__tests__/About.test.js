@@ -1,14 +1,14 @@
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import { BrowserRouter } from "react-router-dom";
+import { MemoryRouter } from "react-router-dom";
 import About from "../About";
 
 describe("About us page", () => {
   beforeEach(() => {
     render(
-      <BrowserRouter>
+      <MemoryRouter>
         <About />
-      </BrowserRouter>
+      </MemoryRouter>
     );
   });
 

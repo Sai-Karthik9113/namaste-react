@@ -5,7 +5,10 @@ const RestaurantCard = (props) => {
   const { resData } = props;
 
   return (
-    <div className="h-full flex flex-col bg-white dark:bg-gray-800 shadow-lg rounded-xl overflow-hidden transition-transform duration-300 transform hover:scale-105">
+    <div
+      data-testid="restaurantCard"
+      className="h-full flex flex-col bg-white dark:bg-gray-800 shadow-lg rounded-xl overflow-hidden transition-transform duration-300 transform hover:scale-105"
+    >
       {resData?.info?.cloudinaryImageId ? (
         <img
           className="w-full h-48 object-cover"

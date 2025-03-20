@@ -2,17 +2,17 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import Header from "../Header";
 import { Provider } from "react-redux";
-import { BrowserRouter } from "react-router-dom";
+import { MemoryRouter } from "react-router-dom";
 import appStore from "../../redux_store/appStore";
 
 describe("Header", () => {
   beforeEach(() => {
     render(
-      <BrowserRouter>
+      <MemoryRouter>
         <Provider store={appStore}>
           <Header />
         </Provider>
-      </BrowserRouter>
+      </MemoryRouter>
     );
   });
   it("Should have link to navigate to the home page", () => {

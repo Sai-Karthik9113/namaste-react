@@ -23,11 +23,15 @@ const Body = () => {
       const data = await fetch(`${API_URL}`);
       const res = await data.json();
 
-      const availableRestaurants = res?.data?.cards.filter(
-        (item) =>
-          item?.card?.card?.gridElements?.infoWithStyle?.["@type"] ===
-          "type.googleapis.com/swiggy.presentation.food.v2.FavouriteRestaurantInfoWithStyle"
-      );
+      const availableRestaurants = res?.data?.cards.filter((item) => {
+        const type = item?.card?.card?.gridElements?.infoWithStyle?.["@type"];
+        return (
+          type ===
+            "type.googleapis.com/swiggy.presentation.food.v2.FavouriteRestaurantInfoWithStyle" ||
+          type ===
+            "type.googleapis.com/swiggy.seo.widgets.v1.FoodRestaurantGridListingInfo"
+        );
+      });
 
       const mergerdRestaurants = availableRestaurants.flatMap(
         (item) =>
@@ -36,7 +40,9 @@ const Body = () => {
 
       const uniqueRestaurants = Array.from(
         new Map(
-          mergerdRestaurants.map((item) => [item?.info?.id, item])
+          mergerdRestaurants
+            .filter((item) => item?.info?.id) // Ensure id exists
+            .map((item) => [item.info.id, item]) // Deduplicate based on id
         ).values()
       );
 
