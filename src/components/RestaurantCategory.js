@@ -20,6 +20,7 @@ const RestaurantCategory = ({
 
   return (
     <div
+      data-testid="restaurantCategory"
       className="my-10 pb-10 border-b-15 border-gray-200 dark:border-gray-600 transition-colors duration-300"
       onClick={handleClick}
     >

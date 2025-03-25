@@ -1,6 +1,9 @@
 const ShimmerDish = () => {
   return (
-    <div className="flex justify-center items-center min-h-screen px-4 bg-white dark:bg-gray-800 transition-colors duration-300">
+    <div
+      data-testid="shimmerDishUI"
+      className="flex justify-center items-center min-h-screen px-4 bg-white dark:bg-gray-800 transition-colors duration-300"
+    >
       <div className="w-full max-w-4xl mt-20 p-8 md:p-12">
         <div className="h-8 w-1/2 bg-gray-200 dark:bg-gray-700 rounded-lg animate-pulse mb-6 transition-colors duration-300"></div>
 

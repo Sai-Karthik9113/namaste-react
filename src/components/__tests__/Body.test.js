@@ -3,7 +3,7 @@ import "@testing-library/jest-dom";
 import Body from "../Body";
 import MOCK_DATA from "../mocks/restaurantListMockData.json";
 import useOnlineStatus from "../../utils/useOnlineStatus";
-import { MemoryRouter, useNavigate } from "react-router-dom";
+import { MemoryRouter } from "react-router-dom";
 import { act } from "react";
 
 jest.mock("../../utils/useOnlineStatus", () => jest.fn());
